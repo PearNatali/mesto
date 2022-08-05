@@ -1,21 +1,28 @@
 .page {
     min-width: 320px;
+    max-width: 880px;
     background-color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 45px 0 60px 0;
+    padding: 45px 19px 60px;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 1140px) {
     .page {
-        padding: 35px 0 50px 0;
+        padding: 35px 19px 50px;
     }
 }
 
 @media screen and (max-width: 984px) {
     .page {
-        padding: 28px 0 36px 0;
+        padding: 28px 19px 36px;
+    }
+}
+
+@media screen and (max-width: 565px) {
+    .page {
+        padding: 28px 0 36px;
     }
 }

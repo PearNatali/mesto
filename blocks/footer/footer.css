@@ -1,27 +1,13 @@
 .footer {
-    width: calc(100% - 200px);
+    width: 100%;
     display: flex;
     flex-direction: row;
     margin: 0 auto;
     flex-shrink: 0;
 }
 
-@media screen and (max-width: 1140px) {
-    .footer {
-        width: calc(100% - 150px);
-    }
-}
-
-@media screen and (max-width: 984px) {
-    .footer {
-        width: calc(100% - 100px);
-        padding-left: 19px;
-    }
-}
-
 @media screen and (max-width: 565px) {
     .footer {
-        max-width: 320px;
-        margin: 0;
+        padding-left: 19px;
     }
 }
