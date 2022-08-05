@@ -1,0 +1,16 @@
+.items-grid__like {
+    display: flex;
+    height: 19px;
+    width: 22px;
+    border-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-image: url('../../../images/like.svg');
+    background-color: transparent;
+}
+
+.items-grid__like:hover {
+    opacity: 50%;
+    transform: 3s ease-in-out;
+}
