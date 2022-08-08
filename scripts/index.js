@@ -13,8 +13,8 @@ const popupInputJobElement = popupFormElement.querySelector('.popup__input_type_
 //открытие и закрытие popup
 const popupOpen = function() {
     popupElement.classList.add('popup_opened');
-    profileNameElement.textContent = popupInputNameElement.value;
-    profileJobElement.textContent = popupInputJobElement.value;
+    popupInputNameElement.textContent = profileNameElement.value;
+    popupInputJobElement.textContent = profileJobElement.value;
 }
 
 const popupClose = function() {

@@ -13,7 +13,8 @@
     border-style: none;
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
-    border-radius: 2px;    
+    border-radius: 2px;  
+    padding: 0;  
 }
 
 .popup__submit-btn:hover {

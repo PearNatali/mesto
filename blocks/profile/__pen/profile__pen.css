@@ -6,7 +6,7 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-    background-size: auto;
+    background-size: 10px;
     background-image: url('../../../images/pencil.svg');
     box-sizing: border-box;
     background-color: transparent;
@@ -14,7 +14,7 @@
     background-position: center;
 }
 
-.popup__close:hover {
+.profile__pen:hover {
     opacity: 60%;
     transform: 3s ease-in-out;
 }
@@ -23,5 +23,6 @@
     .profile__pen {
         width: 18px;
         height: 18px;
+        background-size: 7.5px;
     }
 }

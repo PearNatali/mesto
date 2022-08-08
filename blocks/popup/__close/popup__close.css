@@ -11,6 +11,7 @@
     background-color: transparent;
     background-position: center;
     box-sizing: border-box;
+    background-size: cover;
 }
 
 .popup__close:hover {

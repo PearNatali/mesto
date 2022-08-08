@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 665px) {
     .profile__text {
         justify-content: center;
         align-content: center;

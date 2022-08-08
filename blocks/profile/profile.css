@@ -7,22 +7,19 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    padding: 40px 0 48px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    padding: 40px 0 48px 0;
 }
 
 @media screen and (max-width: 984px) {
     .profile {
-        padding: 40px 0 40px;
+        padding: 40px 0 40px 0;
     }
 }
 
-@media screen and (max-width: 565px) {
+@media screen and (max-width: 665px) {
     .profile {
         flex-direction: column;
         justify-content: center;
-        padding: 40px 0 36px;
+        padding: 40px 0 36px 0;
     }
 }
