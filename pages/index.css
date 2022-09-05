@@ -1,6 +1,6 @@
 /*подключение стилей текста*/
 @import url('../vendor/normalize.css');
-@import url('../vendor/inter.css');
+@import url('../vendor/fonts.css');
 /*блок page*/
 @import url('../blocks/page/page.css');
 /*блок header*/

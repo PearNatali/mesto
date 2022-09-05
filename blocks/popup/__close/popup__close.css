@@ -16,7 +16,7 @@
 
 .popup__close:hover {
     opacity: 60%;
-    transform: 3s ease-in-out;
+    transition: 3s ease-in-out;
 }
 
 @media screen and (max-width: 984px) {

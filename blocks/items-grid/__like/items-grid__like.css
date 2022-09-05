@@ -12,5 +12,5 @@
 
 .items-grid__like:hover {
     opacity: 50%;
-    transform: 3s ease-in-out;
+    transition: 3s ease-in-out;
 }

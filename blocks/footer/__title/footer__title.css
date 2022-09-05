@@ -8,9 +8,27 @@
     margin: 0;
 }
 
+@media screen and (max-width: 1080px) {
+    .footer__title {
+        padding-left: 36px;
+    }
+}
+
 @media screen and (max-width: 984px) {
     .footer__title {
         font-size: 14px;
         line-height: 17px;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .footer__title {
+        padding-left: 126px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .footer__title {
+        padding-left: 0;
     }
 }

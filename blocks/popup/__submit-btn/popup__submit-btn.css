@@ -19,7 +19,7 @@
 
 .popup__submit-btn:hover {
     opacity: 80%;
-    transform: 3s ease-in-out;
+    transition: 3s ease-in-out;
 }
 
 .popup__submit-btn:active {
