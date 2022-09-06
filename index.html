@@ -22,7 +22,7 @@
                 <div class="profile__editform">
                     <div class="profile__text">
                         <h1 class="profile__title">Жак Ив-Кусто</h1>
-                        <button class="profile__pen" type="button"></button>
+                        <button class="profile__pen" type="button" aria-label="редактировать"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
@@ -31,54 +31,65 @@
         </section>
 
         <section class="items-grid">
+            <ul class="items-grid__table">
+                <article class="items-grid__card">
+                    <img class="items-grid__photo" src="./images/patagonia.png" alt="Патагония">
+                    <div class="items-grid__text">
+                        <h2 class="items-grid__title">Патагония</h2>
+                        <button class="items-grid__like" type="button" aria-label="оценить"></button>      
+                    </div>
+                </article>
+            </ul>
+                
+            <ul class="items-grid__table">
+                <article class="items-grid__card">
+                    <img class="items-grid__photo" src="./images/Kahurangi.png" alt="Кахуранги">
+                    <div class="items-grid__text">
+                        <h2 class="items-grid__title">Кахуранги</h2>
+                        <button class="items-grid__like" type="button" aria-label="оценить"></button>
+                    </div>
+                </article>
+            </ul>
 
-            <article class="items-grid__card">
-                <img class="items-grid__photo" src="./images/patagonia.png" alt="Патагония">
-                <div class="items-grid__text">
-                    <h2 class="items-grid__title">Патагония</h2>
-                    <button class="items-grid__like" type="button"></button>      
-                </div>
-            </article>
-                            
-            <article class="items-grid__card">
-                <img class="items-grid__photo" src="./images/Kahurangi.png" alt="Кахуранги">
-                <div class="items-grid__text">
-                    <h2 class="items-grid__title">Кахуранги</h2>
-                    <button class="items-grid__like" type="button"></button>
-                </div>
-            </article>
+            <ul class="items-grid__table">
+                <article class="items-grid__card">
+                    <img class="items-grid__photo" src="./images/ognenannay.png" alt="Огненная Земля">
+                    <div class="items-grid__text">
+                        <h2 class="items-grid__title">Огненная Земля</h2>
+                        <button class="items-grid__like" type="button" aria-label="оценить"></button>
+                    </div>
+                </article>
+            </ul>
 
-            <article class="items-grid__card">
-                <img class="items-grid__photo" src="./images/ognenannay.png" alt="Огненная Земля">
-                <div class="items-grid__text">
-                    <h2 class="items-grid__title">Огненная Земля</h2>
-                    <button class="items-grid__like" type="button"></button>
-                </div>
-            </article>
-
-            <article class="items-grid__card">
-                <img class="items-grid__photo" src="./images/lofotenskie-ostrova.png" alt="Лафотенские острова">
-                <div class="items-grid__text">
-                    <h2 class="items-grid__title">Лафотены</h2>
-                    <button class="items-grid__like" type="button"></button>
-                </div>
-            </article>
-                        
-            <article class="items-grid__card">
-                <img class="items-grid__photo" src="./images/chernogoriia.png" alt="Черногория">
-                <div class="items-grid__text">
-                    <h2 class="items-grid__title">Черногория</h2>
-                    <button class="items-grid__like" type="button"></button>
-                </div>
-            </article>
-                        
-            <article class="items-grid__card">
-                <img class="items-grid__photo" src="./images/morokko.png" alt="Морокко">
-                <div class="items-grid__text">
-                    <h2 class="items-grid__title">Морокко</h2>
-                    <button class="items-grid__like" type="submit"></button>
-                </div>
-            </article>
+            <ul class="items-grid__table">
+                <article class="items-grid__card">
+                    <img class="items-grid__photo" src="./images/lofotenskie-ostrova.png" alt="Лафотенские острова">
+                    <div class="items-grid__text">
+                        <h2 class="items-grid__title">Лафотены</h2>
+                        <button class="items-grid__like" type="button" aria-label="оценить"></button>
+                    </div>
+                </article>
+            </ul>
+            
+            <ul class="items-grid__table">
+                <article class="items-grid__card">
+                    <img class="items-grid__photo" src="./images/chernogoriia.png" alt="Черногория">
+                    <div class="items-grid__text">
+                        <h2 class="items-grid__title">Черногория</h2>
+                        <button class="items-grid__like" type="button" aria-label="оценить"></button>
+                    </div>
+                </article>
+            </ul>
+            
+            <ul class="items-grid__table">
+                <article class="items-grid__card">
+                    <img class="items-grid__photo" src="./images/morokko.png" alt="Морокко">
+                    <div class="items-grid__text">
+                        <h2 class="items-grid__title">Морокко</h2>
+                        <button class="items-grid__like" type="button" aria-label="оценить"></button>
+                    </div>
+                </article>
+            </ul>
         </section>
     </main>
 
@@ -88,12 +99,12 @@
                         
     <div  class="popup">
         <div class="popup__container">
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close" type="reset" aria-label="закрыть"></button>
             <form class="popup__content" name="myForm">
                 <h2 class="popup__text">Редактировать профиль</h2>
-                <input class="popup__input popup__input_type_name" name="name" type="text" value="Жак-Ив Кусто">
-                <input class="popup__input popup__input_type_job" name="job" type="text" value="Исследователь океана">
-                <button class="popup__submit-btn" type="submit">Сохранить</button>
+                <input class="popup__input popup__input_type_name" name="name" type="text" placeholder="Ваше имя">
+                <input class="popup__input popup__input_type_job" name="job" type="text" placeholder="Ваша профессия">
+                <button class="popup__submit-btn" type="submit" aria-label="отправка">Сохранить</button>
             </form>
         </div>
     </div>
