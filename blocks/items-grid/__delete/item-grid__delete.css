@@ -1,0 +1,19 @@
+.items-grid__delete {
+    position: absolute;
+    right: -262px;
+    top: 20px;
+    height: 19px;
+    width: 18px;
+    border-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-image: url('../../../images/delete.svg');
+    background-color: transparent;
+    z-index: 1;
+}
+
+.items-grid__delete:hover {
+    opacity: 50%;
+    transition: 3s ease-in-out;
+}
