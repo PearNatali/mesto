@@ -18,27 +18,43 @@ const itemPlaceElement = document.querySelector('.items-grid');
 const itemTableElement = itemPlaceElement.querySelector('.items-grid__table');
 const popupItemCloseButtonElement = popupItemElement.querySelector('.popup__close_item'); 
 const popupItemFormElement = popupItemElement.querySelector('.popup__content_item');
-const popupItemInputTitleElement = popupItemFormElement.querySelector('.popup__input_type_title');
+const popupItemInputNameElement = popupItemFormElement.querySelector('.popup__input_type_name');
 const popupItemInputLinkElement = popupItemFormElement.querySelector('.popup__input_type_link');
 const templateItemElement = document.querySelector('.item-template').content;
+const cardItemElement = document.querySelector('.items-grid__card');
+const cardItemPhotoElement = document.querySelector('.items-grid__photo');
+const deleteElement = document.querySelector('.items-grid__delete');
+const cardItemNameElement = document.querySelector('.items-grid__title');
+const cardItemLikeElement  = document.querySelector('.items-grid__like');
 
-//добавление карточек items
+//добавление карточек items//внесение значений place и отправка данных
 const items = [itemPlaceElement];
+
 function render() {
     items.forEach(renderItem);
 }
-function renderItem(link, text) {
+function createItem(name, link) {
     const newItem = templateItemElement.cloneNode(true);
-    newItem.querySelector('.items-grid__photo').innerText = link;
-    newItem.querySelector('.items-grid__title').innerText = text;
-    itemTableElement.appendChild(newItem);
+    cardItemNameElement.textContent = name;
+    cardItemNameElement.alt = name;
+    cardItemPhotoElement.src = link;
+    return newItem;
 };
-function addItem(evt) {
-    renderItem(popupItemInputLinkElement.value, popupItemInputTitleElement.value);
+
+profilePlusButtonElement.addEventListener('click', renderItem);
+//cardItemLikeElement.addEventListener('click', likeItem);
+cardItemPhotoElement.addEventListener('click', photoOpen);
+
+function renderItem(name, link) {
+    items.prepend(createItem(name, link));
 }
-addItem();
-profilePlusButtonElement.addEventListener('click', addItem);
+
 render();
+
+//Like item
+//function likeItem(){
+//    cardItemLikeElement.src = 
+//}
 
 //открытие popup "редактирование профиля" и "добавление карточек":
 const buttonarray = [popupElement, popupItemElement]
@@ -46,7 +62,6 @@ const popupOpen = function(index) {
     buttonarray[index].classList.toggle('popup_opened');
     popupInputNameElement.textContent = profileNameElement.value;
     popupInputJobElement.textContent = profileJobElement.value;
-
 };
 profileOpenButtonElement.addEventListener('click', ()=> popupOpen(0));
 profilePlusButtonElement.addEventListener('click', ()=> popupOpen(1));
@@ -59,6 +74,19 @@ const popupClose = function() {
 popupCloseButtonElement.addEventListener('click', popupClose);
 popupItemCloseButtonElement.addEventListener('click', popupClose);
 
+//Выборка DOM елеметов для Zoom
+const itemZoomElement = document.querySelector('.popup__zoom');
+const itemZoomContainerElement = document.querySelector('.popup__zoom_container');
+const itemZoomImgElement = document.querySelector('.popup__zoom_img');
+const itemZoomTitleElemnt = document.querySelector('.popup__zoom_title');
+
+//Zoomphoto
+function photoOpen(el) {
+    itemZoom.classList.add('popup_opened');
+    itemZoomImgElement.src = el.currentTarget.closest('.items-grid__photo').src;
+    itemZoomTitleElemnt.textContent = el.currentTarget.closest('.items-grid__title').alt;
+}
+
 //Изменение значений в шапке профиля
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -68,7 +96,6 @@ function formSubmitHandler (evt) {
     profileJobElement.textContent = jobElement;
     popupClose();
 }
-
 popupFormElement.addEventListener('submit', formSubmitHandler);
 
 function formKeypressHandler (e) {
@@ -80,111 +107,12 @@ function formKeypressHandler (e) {
 popupInputNameElement.addEventListener('keypress', formKeypressHandler);
 popupInputJobElement.addEventListener('keypress', formKeypressHandler);
 popupItemInputLinkElement.addEventListener('keypress', formKeypressHandler);
-popupItemInputTitleElement.addEventListener('keypress', formKeypressHandler);
+popupItemInputNameElement.addEventListener('keypress', formKeypressHandler);
 
-//function formClear () {
-//    if (nameElemente !== '') {
-//    nameElemente = '';
-//    jobElement = '';
-//}
-//popupInputNameElement.addEventListener('click', formClear);
-
-
-//function formSubmitHandler (evt) {
-//    if (evt.value === evt.value.replace(/[^0-9], '')) {
-//        return;
-//    }
-//    else {
-//        evt.preventDefault();
-//        popupInputNameElement.value = '';
-//        popupInputJobElement.value = '';
-//    }
-//};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//popupSabmitElement.addEventListener('submit', popupOpen);
-//popupSabmitElement.addEventListener('submit', formSubmitHandler);
-
-//function formSubmitHandler (event) {
-//        event.preventDefault();
-//        popupOpen();
-//        popupClose();
-    
-//}
-
-
-//       let nameElement = popupInputNameElement.value;
-//        let jobElement = popupInputJobElement.value;
-//        profileNameElement.textContent = nameElement;
-//        profileJobElement.textContent = jobElement;
-//        popupClose();
-//    }
-
-//const popupCloseByClickOnOverlay = function(event) {
-//    //console.log(event.target, event.currentTarget);
-//    if (event.target !== event.currentTarget) {
-//        return;
-//    }
-//    popupClose();
-//}
-//popupElement.addEventListener('click', popupCloseByClickOnOverlay);
-
-//function formKeypressHandler (e) {
-//        if (e.keyCode === 13) {
-//            let nameElement = popupInputNameElement.value;
-//            let jobElement = popupInputJobElement.value;
-//            profileNameElement.textContent = nameElement;
-//            profileJobElement.textContent = jobElement; 
-//            popupClose();
-//        };
-//}        
-//    popupInputNameElement.addEventListener('keypress', formKeypressHandler);
-//    popupInputJobElement.addEventListener('keypress', formKeypressHandler);
-
-//function formClear () {
-//    nameElemente = '';
-//    jobElement = '';
-//}
-//   popupInputNameElement.addEventListener('click', formClear);
-
-
-//function formSubmitHandler (event) {
-//    if (this.value === this.value.replace(/[^0-9], '')) {
-//        return;
-//    }
-//    else {
-//        evt.preventDefault();
-//        popupInputNameElement.value = '';
-//        popupInputJobElement.value = '';
-//    }
-//    profileNameElement.textContent = popupInputNameElement.value;
-//  profileJobElement.textContent = popupInputJobElement.value;
-//}
-
-//popupSabmitElement.addEventListener('submit', formSubmitHandler);
+//удаление items
+function addItems(el) {
+    el.querySelector('.item-grid__button').addEventListener('click', handleDelete);
+};
+function handleDelete(event) {
+   event.target.closest('.items-grid__card').remove();
+}
