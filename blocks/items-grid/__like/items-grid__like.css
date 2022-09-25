@@ -12,11 +12,11 @@
 
 .items-grid__like:hover {
     opacity: 50%;
-    transition: 3s ease-in-out;
+    transition: .3s ease-in-out;
 }
 
-.items-grid__like {
-    background-image: url(../../../images/like-active.svg);
+.items-grid__like_active {
+    background-image: url('../../../images/like-active.svg');
 }
 
 

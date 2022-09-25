@@ -96,19 +96,20 @@
         <div class="popup__zoom_container">
             <button 
                 class="popup__zoom_close" 
-                type="reset" 
+                type="button"
                 aria-label="закрыть"></button>
             <img class="popup__zoom_img" 
                 src=""
-                alt="">
+                alt=""/>
             <h2 class="popup__zoom_title"></h2>
         </div>
     </div>
 
 
     <!--template-элементы-->
-        <template class="item-template">
-            <li>
+        <template 
+            id = "item-template"
+            class="item-template">
                 <article class="items-grid__card">
                     <img 
                         class="items-grid__photo" 
@@ -128,7 +129,6 @@
                             aria-label="оценить"></button>
                     </div>
                 </article>
-            </li>
         </template>
 
     <script src="./scripts/index.js"></script>
