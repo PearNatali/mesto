@@ -1,7 +1,7 @@
 .items-grid__delete {
     position: absolute;
     right: -262px;
-    top: 20px;
+    top: -262px;
     height: 19px;
     width: 18px;
     border-style: none;

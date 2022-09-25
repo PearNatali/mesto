@@ -15,8 +15,8 @@
     transition: 3s ease-in-out;
 }
 
-.items-grid__like:active svg path {
-    fill: #000;
+.items-grid__like {
+    background-image: url(../../../images/like-active.svg);
 }
 
 
