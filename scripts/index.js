@@ -39,8 +39,8 @@ const templateItemElement = document.querySelector('.item-template').content;
 const itemLinkElement = templateItemElement.querySelector('.items-grid__photo');
 const itemTitleElement = templateItemElement.querySelector('.items-grid__title');
 //-----------------------------------------------------------------------------------------------------------------
-function popupOpen(el) {
-    el.classList.add('popup_opened');
+function popupOpen(popup) {
+    popup.classList.add('popup_opened');
 };
 profileOpenButtonElement.addEventListener('click', function() {
     popupOpen(popupElement);
@@ -49,8 +49,8 @@ profilePlusButtonElement.addEventListener('click', function() {
     popupOpen(popupItemElement);
 });
 //-----------------------------------------------------------------------------------------------------------------
-function popupClose(el) {
-    el.classList.remove('popup_opened');
+function popupClose(popup) {
+    popup.classList.remove('popup_opened');
 };
 popupCloseButtonElement.addEventListener('click', function() {
     popupClose(popupElement);
@@ -141,21 +141,17 @@ function createCard(item) {
     const zoomPhoto = newItem.querySelector('.items-grid__photo'); //Поиск новой картинки
     const itemNewTitleElement = newItem.querySelector('.items-grid__title'); //Поиск новой картинки
     zoomPhoto.addEventListener('click', function(event) {
-        event.target.closest('.items-grid__photo');
-        function popupZoom(links, names) {
-        const popupImgElement = {
-            link: links,
-            name: names
-        }   
-        popupOpen(popupImgElement(links, names));
-        zoomPhoto.src = popupZoomImgElement['link'];
-        zoomPhoto.alt = popupZoomImgElement['name'];
-        itemNewTitleElement.innerText = popupZoomTitleElement['name'];  
-        };
-});
-    console.log(zoomPhoto.src);
+            debugger 
+            event.target.closest('.items-grid__photo');
+            popupOpen(popupZoomElement);
+            zoomPhoto.src = popupZoomImgElement['link'];
+            zoomPhoto.alt = popupZoomImgElement['name'];
+            itemNewTitleElement.innerText = popupZoomTitleElement['name'];  
+        });
+        
     return newItem;
 };
+
 //-----------------------------------------------------------------------------------------------------------------
 //Перебираем каждый элемент массива:
 items.forEach((element) => {
