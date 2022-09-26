@@ -13,7 +13,7 @@ const profileJobElement = profileElement.querySelector('.profile__subtitle'); //
 const profileOpenButtonElement = profileElement.querySelector('.profile__pen'); //Кнопка редактирования профиля. 
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для добавления новых карточек.
-const popupItemElement = document.querySelector('.popup__item'); //Сам попап по доб.карточки.
+const popupItemElement = document.querySelector('.popup_item'); //Сам попап по доб.карточки.
 const popupItemFormElement = popupItemElement.querySelector('.popup__content_item'); //Содержание попап по доб.карточки. 
 const popupItemCloseButtonElement = popupItemElement.querySelector('.popup__close_item'); //Закрытие попап по доб.карточки.
 const popupItemButtonElement = popupItemFormElement.querySelector('.popup__submit-btn_item'); //Кнопка "Создать" в карточке. 
@@ -28,11 +28,11 @@ const profilePlusButtonElement = profileElement.querySelector('.profile__button'
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для попапа zoom каринки.
 const popupZoomElement = document.querySelector('.popup__zoom'); //Сам попап zoom картинки. 
-const popupZoomContainerElement = popupZoomElement.querySelector('.popup__zoom_container'); //Содержание попап zoom картинки. 
-const popupZoomCloseButtonElement = popupZoomElement.querySelector('.popup__zoom_close'); //Закрытие попап zoom картинки.
+const popupZoomContainerElement = popupZoomElement.querySelector('.popup__container_zoom'); //Содержание попап zoom картинки. 
+const popupZoomCloseButtonElement = popupZoomElement.querySelector('.popup__close_zoom'); //Закрытие попап zoom картинки.
 
 const popupZoomImgElement = popupZoomElement.querySelector('.popup__zoom_img'); //Картинка в карточке;
-const popupZoomTitleElement = popupZoomElement.querySelector('.popup__zoom_title'); //Подпись карточки;
+const popupZoomTitleElement = popupZoomElement.querySelector('.popup__title_zoom'); //Подпись карточки;
 //-----------------------------------------------------------------------------------------------------------------
 //Функция открытия попап:
 function popupOpen(popup) {
