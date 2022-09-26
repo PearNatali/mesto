@@ -178,15 +178,3 @@ function formSubmitHandler (evt) {
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных ред.профиля.
 popupFormElement.addEventListener('submit', formSubmitHandler);
-//-----------------------------------------------------------------------------------------------------------------
-//Изменение данных при нажати Enter:
-popupFormElement.addEventListener('keydown', enterSubmit);
-popupItemFormElement.addEventListener('keydown', enterSubmit);
-popupZoomElement.addEventListener('keydown', enterSubmit);
-//Функция отправи данных при нажатии на Enter:
-function enterSubmit(element) {
-    if (element.keyCode === 13) {
-        formSubmitHandler();
-        submitButtonItemElement();
-    };
-};
