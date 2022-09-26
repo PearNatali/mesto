@@ -32,8 +32,8 @@
 /*блок popup*/
 @import url('../blocks/popup/popup.css');
 /*блок popup zoom*/
-@import url('../blocks/popup/__zoom/_img/popup__zoom_img.css');
-@import url('../blocks/popup/__zoom/__title/_zoom/popup__title_zoom.css');
+@import url('../blocks/popup/__img/_zoom/popup__img_zoom.css');
+@import url('../blocks/popup/__title/_zoom/popup__title_zoom.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__container/_zoom/popup__container_zoom.css');

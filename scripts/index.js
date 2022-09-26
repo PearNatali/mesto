@@ -27,11 +27,11 @@ const itemTableElement = itemPlaceElement.querySelector('.items-grid__table'); /
 const profilePlusButtonElement = profileElement.querySelector('.profile__button'); //Кнопка добавления карточеки.
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для попапа zoom каринки.
-const popupZoomElement = document.querySelector('.popup__zoom'); //Сам попап zoom картинки. 
+const popupZoomElement = document.querySelector('.popup_zoom'); //Сам попап zoom картинки. 
 const popupZoomContainerElement = popupZoomElement.querySelector('.popup__container_zoom'); //Содержание попап zoom картинки. 
 const popupZoomCloseButtonElement = popupZoomElement.querySelector('.popup__close_zoom'); //Закрытие попап zoom картинки.
 
-const popupZoomImgElement = popupZoomElement.querySelector('.popup__zoom_img'); //Картинка в карточке;
+const popupZoomImgElement = popupZoomElement.querySelector('.popup__img_zoom'); //Картинка в карточке;
 const popupZoomTitleElement = popupZoomElement.querySelector('.popup__title_zoom'); //Подпись карточки;
 //-----------------------------------------------------------------------------------------------------------------
 //Функция открытия попап:
