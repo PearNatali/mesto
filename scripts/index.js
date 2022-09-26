@@ -51,10 +51,6 @@ profileOpenButtonElement.addEventListener('click', function() {
 profilePlusButtonElement.addEventListener('click', function() {
     popupOpen(popupItemElement);
 });
-// Открытие попапа zoom картинки:
-itemLinkElement.addEventListener('click', function() {
-    popupOpen(popupZoomElement);
-});
 //-----------------------------------------------------------------------------------------------------------------
 //Закрытие попап:
 function popupClose(el) {
@@ -135,6 +131,17 @@ function createCard(item) {
      itemDeleteElements.addEventListener('click', function(event) {
         event.target.closest('.items-grid__card').remove();
     });
+    //Функция zoom картинки:
+    const zoomPhoto = newItem.querySelector('.items-grid__photo'); //Поиск новой картинки
+    const itemNewTitleElement = newItem.querySelector('.items-grid__title'); //Поиск новой картинки
+    zoomPhoto.addEventListener('click', function(event) {
+        event.target.closest('.items-grid__photo');
+        popupOpen(popupZoomElement);
+        newItem.src = popupZoomImgElement['link'];
+        newItem.alt = popupZoomImgElement['name'];
+        itemNewTitleElement.innerText = popupZoomTitleElement['name'];  
+        console.log(newItem.src);
+    });
     return newItem;
 };
 //-----------------------------------------------------------------------------------------------------------------
@@ -163,14 +170,6 @@ function submitButtonItemElement(evt) {
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных новой карточки.
 popupItemFormElement.addEventListener('submit', submitButtonItemElement);
-//-----------------------------------------------------------------------------------------------------------------
-//Функция zoom картинки:
-itemLinkElement.addEventListener('click', function() {
-    popupOpen(popupZoomElement);
-    itemLinkElement.src = popupZoomImgElement['link'];
-    itemLinkElement.alt = popupZoomImgElement['name'];
-    itemTitleElement.innerText = popupZoomTitleElement['name'];       
-});
 //-----------------------------------------------------------------------------------------------------------------
 //Изменение значений в шапке профиля
 function formSubmitHandler (evt) {
