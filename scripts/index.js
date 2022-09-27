@@ -1,82 +1,59 @@
 //Выборка DOM елеметов для редактирования профиля.
-const popupElement = document.querySelector('.popup'); //Сам попап по ред.профиля. 
-const popupFormElement = popupElement.querySelector('.popup__content'); //Содержание попап по ред.профилю. 
-const popupCloseButtonElement = popupElement.querySelector('.popup__close'); //Закрытие попап по ред.профиля.
+const profilePopup = document.querySelector('.popup_profile'); //Сам попап по ред.профиля. 
+const profileForm = profilePopup.querySelector('.popup__container_profile'); //Содержимое попапа.
+const profileCloseButton = profilePopup.querySelector('.popup__close_profile'); //Закрытие попап по ред.профиля.
 
-const popupInputNameElement = popupFormElement.querySelector('.popup__input_type_name'); //Имя в попап.
-const popupInputJobElement = popupFormElement.querySelector('.popup__input_type_job'); //Профессия в попап.
+const profilePopupInputName = profileForm.querySelector('.popup__input_type_name'); //Имя в попап.
+const profilePopupInputJob = profileForm.querySelector('.popup__input_type_job'); //Профессия в попап.
 
 const profileElement = document.querySelector('.profile'); //Форма внесения данных профиля
-const profileNameElement = profileElement.querySelector('.profile__title'); //Имя формы профиля.
-const profileJobElement = profileElement.querySelector('.profile__subtitle'); //Профессия формы профиля.
+const profileName = profileElement.querySelector('.profile__title'); //Имя формы профиля.
+const profileJob = profileElement.querySelector('.profile__subtitle'); //Профессия формы профиля.
 
-const profileOpenButtonElement = profileElement.querySelector('.profile__pen'); //Кнопка редактирования профиля. 
+const profileOpenButton = profileElement.querySelector('.profile__pen'); //Кнопка редактирования профиля. 
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для добавления новых карточек.
-const popupItemElement = document.querySelector('.popup_item'); //Сам попап по доб.карточки.
-const popupItemFormElement = popupItemElement.querySelector('.popup__content_item'); //Содержание попап по доб.карточки. 
-const popupItemCloseButtonElement = popupItemElement.querySelector('.popup__close_item'); //Закрытие попап по доб.карточки.
-const popupItemButtonElement = popupItemFormElement.querySelector('.popup__submit-btn_item'); //Кнопка "Создать" в карточке. 
+const itemPopup = document.querySelector('.popup_item'); //Сам попап по доб.карточки.
+const itemForm = itemPopup.querySelector('.popup__content_item'); //Содержание попап по доб.карточки. 
+const itemCloseButton = itemPopup.querySelector('.popup__close_item'); //Закрытие попап по доб.карточки.
 
-const popupItemInputTitleElement = popupItemFormElement.querySelector('.popup__input_type_title'); //Название места в попап.
-const popupItemInputLinkElement = popupItemFormElement.querySelector('.popup__input_type_link'); //Ссылка на картинку в попап.
+const itemPopupInputTitle = itemPopup.querySelector('.popup__input_type_title'); //Название места в попап.
+const itemPopupInputLink = itemPopup.querySelector('.popup__input_type_link'); //Ссылка на картинку в попап.
 
-const itemPlaceElement = document.querySelector('.items-grid'); //Сам контейнер для новых карточек.
-const itemTableElement = itemPlaceElement.querySelector('.items-grid__table'); //Содержимое контейнера для новых карточек. 
+const itemCard = document.querySelector('.card'); //Сам контейнер для новых карточек.
+const itemCardTable = itemCard.querySelector('.card__table'); //Содержимое контейнера для новых карточек. 
 
-const profilePlusButtonElement = profileElement.querySelector('.profile__button'); //Кнопка добавления карточеки.
+const itemOpenButton = profileElement.querySelector('.profile__button'); //Кнопка добавления карточеки.
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для попапа zoom каринки.
-const popupZoomElement = document.querySelector('.popup_zoom'); //Сам попап zoom картинки. 
-const popupZoomContainerElement = popupZoomElement.querySelector('.popup__container_zoom'); //Содержание попап zoom картинки. 
-const popupZoomCloseButtonElement = popupZoomElement.querySelector('.popup__close_zoom'); //Закрытие попап zoom картинки.
+const zoomPopup = document.querySelector('.popup_zoom'); //Сам попап zoom картинки. 
+const zoomCloseButton = zoomPopup.querySelector('.popup__close_zoom'); //Закрытие попап zoom картинки.
 
-const popupZoomImgElement = popupZoomElement.querySelector('.popup__img_zoom'); //Картинка в карточке;
-const popupZoomTitleElement = popupZoomElement.querySelector('.popup__title_zoom'); //Подпись карточки;
+const zoomPopupImg = zoomPopup.querySelector('.popup__img_zoom'); //Картинка в карточке;
+const zoomPopupTitle = zoomPopup.querySelector('.popup__title_zoom'); //Подпись карточки;
 //-----------------------------------------------------------------------------------------------------------------
 //Функция открытия попап:
-function popupOpen(popup) {
+function openPopup(popup) {
     popup.classList.add('popup_opened');
 };
 // Открытие попапа ред.профиля:
-profileOpenButtonElement.addEventListener('click', function() {
-    popupOpen(popupElement);
+profileOpenButton.addEventListener('click', function() {
+    openPopup(profilePopup);
 });
 // Открытие попапа доб.карточки:
-profilePlusButtonElement.addEventListener('click', function() {
-    popupOpen(popupItemElement);
+itemOpenButton.addEventListener('click', function() {
+    openPopup(itemPopup);
 });
 //-----------------------------------------------------------------------------------------------------------------
-//Закрытие попап:
-function popupClose(popup) {
+//Функция закрытия попапа:
+function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
-// Закрытие попапа ред.профиля:
-popupCloseButtonElement.addEventListener('click', function() {
-    popupClose(popupElement);
-});
-popupCloseButtonElement.addEventListener('click', function(event) {
-    if(event.target === event.currentTarget) {
-        popupClose(popupElement);
-    };
-});
-// Закрытие попапа доб.карточки:
-popupItemCloseButtonElement.addEventListener('click', function() {
-    popupClose(popupItemElement);
-});
-popupItemCloseButtonElement.addEventListener('click', function(event) {
-    if(event.target === event.currentTarget) {
-        popupClose(popupItemElement);
-    };
-});
-// Закрытие попапа zoom карточки:
-popupZoomCloseButtonElement.addEventListener('click', function() {
-    popupClose(popupZoomElement);
-});
-popupZoomCloseButtonElement.addEventListener('click', function (event) {
-    if(event.target === event.currentTarget) {
-        popupClose(popupZoomElement);
-    };
+//Универсальная функция закрытия для всх попапов:
+const closeButtons = document.querySelectorAll('.popup__close');
+closeButtons.forEach((button) => {
+    const popup = button.closest('.popup');
+    button.addEventListener('click', () => closePopup(popup))
 });
 //-----------------------------------------------------------------------------------------------------------------
 //Создание массива карточек items.
@@ -111,31 +88,31 @@ const items = [
 //Задаем функцию создания новой карточки:
 function createCard(item) {
     //Выборка DOM елеметов для других функций с карточками.
-    const templateItemElement = document.querySelector('.item-template').content; //Поиск контента темплит элемента.
-    const itemLinkElement = templateItemElement.querySelector('.items-grid__photo'); //Поиск внутри него картинки.
-    const itemTitleElement = templateItemElement.querySelector('.items-grid__title'); //Поиск внутри названия картинки. 
+    const cardTemplate = document.querySelector('.card-template').content; //Поиск контента темплит элемента.
+    const cardPhoto = cardTemplate.querySelector('.card__photo'); //Поиск внутри него картинки.
+    const cardTitle = cardTemplate.querySelector('.card__title'); //Поиск внутри названия картинки. 
     //Передача данных карточек в templete - элемент:
-    itemLinkElement.src = item['link'];
-    itemLinkElement.alt = item['name'];
-    itemTitleElement.innerText = item['name'];
-    const newItem = templateItemElement.cloneNode(true);
+    cardPhoto.src = item.link;
+    cardPhoto.alt = item.name;
+    cardTitle.innerText = item.name;
+    const newItem = cardTemplate.cloneNode(true);
     //Функция лайка:
-    const itemLikeElement = newItem.querySelector('.items-grid__like'); //Лайк карточки;
-    itemLikeElement.addEventListener('click', function(event) {
-        event.target.classList.toggle('items-grid__like_active');
+    const cardLikeButton = newItem.querySelector('.card__button_like'); //Лайк карточки;
+    cardLikeButton.addEventListener('click', function(event) {
+        event.target.classList.toggle('card__button_like_active');
     });
     //Функция удаления:
-    const itemDeleteElements = newItem.querySelector('.items-grid__delete'); //Удаление карточки;
-    itemDeleteElements.addEventListener('click', function(event) {
-        event.target.closest('.items-grid__card').remove();
+    const cardDeleteButton = newItem.querySelector('.card__button_delete'); //Удаление карточки;
+    cardDeleteButton.addEventListener('click', function(event) {
+        event.target.closest('.card__item').remove();
     });
     //Функция zoom картинки:
-    const zoomPhoto = newItem.querySelector('.items-grid__photo'); //Поиск новой картинки
-    zoomPhoto.addEventListener('click', function() {
-            popupOpen(popupZoomElement);
-            popupZoomImgElement.src = item['link'];
-            popupZoomImgElement.alt = item['name'];
-            popupZoomTitleElement.innerText = item['name'];  
+    const cardNewPhoto = newItem.querySelector('.card__photo'); //Поиск новой картинки
+    cardNewPhoto.addEventListener('click', function() {
+            openPopup(zoomPopup);
+            zoomPopupImg.src = item.link;
+            zoomPopupImg.alt = item.name;
+            zoomPopupTitle.innerText = item.name;  
         });   
     return newItem;
 };
@@ -143,7 +120,7 @@ function createCard(item) {
 //Перебираем каждый элемент массива:
 items.forEach((element) => {
     const newItems = createCard(element);
-    itemTableElement.append(newItems);
+    itemCardTable.append(newItems);
 });
 //-----------------------------------------------------------------------------------------------------------------
 //Функция добавления карточки:
@@ -153,28 +130,34 @@ function addCard(links, names) {
         link: links
     }
     const itemElement = createCard(item);
-    itemTableElement.prepend(itemElement);
+    itemCardTable.prepend(itemElement);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Функция сохранения/отправки данных по новой карточке.
-function submitButtonItemElement(evt) {
-    addCard(popupItemInputLinkElement.value, popupItemInputTitleElement.value);
+function submitItemElement(evt) {
+    addCard(itemPopupInputLink.value, itemPopupInputTitle.value);
     evt.preventDefault();
-    popupClose(popupItemElement);
+    closePopup(itemPopup);
+    cardPhoto.src = itemPopupInputLink.value;
+    cardTitle.innerText = itemPopupInputTitle.value;
+    evt.target.reset(itemPopup.value);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных новой карточки.
-popupItemFormElement.addEventListener('submit', submitButtonItemElement);
+itemForm.addEventListener('submit', submitItemElement);
 //-----------------------------------------------------------------------------------------------------------------
 //Изменение значений в шапке профиля
-function formSubmitHandler (evt) {
+function handleProfileFormSubmit (evt) {
     evt.preventDefault();
-    let nameElement = popupInputNameElement.value;
-    let jobElement = popupInputJobElement.value;
-    profileNameElement.textContent = nameElement;
-    profileJobElement.textContent = jobElement;
-    popupClose(popupElement);
+    const name = profilePopupInputName.value;
+    const job = profilePopupInputJob.value;
+    profileName.textContent = name;
+    profileJob.textContent = job;
+    closePopup(profilePopup);
+    name = itemPopupInputTitle.value;
+    job = itemPopupInputLink.value;
+    evt.target.reset(profilePopup.value);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных ред.профиля.
-popupFormElement.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', handleProfileFormSubmit);

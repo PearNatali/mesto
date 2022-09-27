@@ -30,8 +30,8 @@
             <button class="profile__button" type="button" aria-label="добавить"></button>
         </section>
 
-        <section class="items-grid">
-            <ul class="items-grid__table"></ul>
+        <section class="card">
+            <ul class="card__table"></ul>
         </section>
     </main>
 
@@ -40,13 +40,13 @@
     </footer>
 
     <!--Форма редактирования шапки профиля-->                    
-    <div  class="popup">
-        <div class="popup__container">
+    <div  class="popup popup_profile">
+        <div class="popup__container popup__container_profile">
             <button 
-                class="popup__close" 
+                class="popup__close popup__close_profile" 
                 type="reset" 
                 aria-label="закрыть"></button>
-            <form class="popup__content" name="myForm">
+            <form class="popup__content popup__content_profile" name="myForm">
                 <h2 class="popup__text">Редактировать профиль</h2>
                 <input 
                     class="popup__input popup__input_type_name" 
@@ -59,7 +59,7 @@
                     type="text" 
                     placeholder="Ваша профессия">
                 <button 
-                    class="popup__submit-btn" 
+                    class="popup__submit popup__submit_profile" 
                     type="submit" 
                     aria-label="отправка">Сохранить</button>
             </form>
@@ -84,7 +84,7 @@
                     type="url" 
                     placeholder="Ссылка на картинку">
                 <button 
-                    class="popup__submit-btn popup__submit-btn_item" 
+                    class="popup__submit popup__submit_item" 
                     type="submit" 
                     aria-label="отправка">Создать</button>
             </form>
@@ -107,23 +107,23 @@
 
     <!--template-элементы-->
         <template 
-            id = "item-template"
-            class="item-template">
-                <article class="items-grid__card">
+            id = "card-template"
+            class="card-template">
+                <article class="card__item">
                     <img 
-                        class="items-grid__photo" 
+                        class="card__photo" 
                         src="/" 
                         alt="Название каринки">
-                    <div class="item-grid__button">
+                    <div class="card__button">
                         <button 
-                            class="items-grid__delete" 
+                            class="card__button_delete" 
                             type="button" 
                             aria-label="удалить"></button>
                     </div>
-                    <div class="items-grid__text">
-                        <h2 class="items-grid__title"></h2>
+                    <div class="card__text">
+                        <h2 class="card__title"></h2>
                         <button 
-                            class="items-grid__like" 
+                            class="card__button_like" 
                             type="button" 
                             aria-label="оценить"></button>
                     </div>

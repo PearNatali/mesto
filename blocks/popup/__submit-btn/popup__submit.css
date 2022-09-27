@@ -1,4 +1,4 @@
-.popup__submit-btn {
+.popup__submit {
     font-family: 'Inter', Arial, sans-serif;
     font-size: 18px;
     line-height: 22px;
@@ -17,18 +17,18 @@
     padding: 0;
 }
 
-.popup__submit-btn:hover {
+.popup__submit:hover {
     opacity: 80%;
     transition: 3s ease-in-out;
 }
 
-.popup__submit-btn:active {
+.popup__submit:active {
     opacity: 100%;
     border-color: rgba(0, 0, 0, 1);
 }
 
 @media screen and (max-width: 765px) {
-    .popup__submit-btn {
+    .popup__submit {
         height: 46px;
         margin-top: 45px;
         font-size: 14px;

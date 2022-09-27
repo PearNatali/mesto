@@ -1,4 +1,4 @@
-.items-grid__like {
+.card__button_like {
     display: flex;
     height: 19px;
     width: 22px;
@@ -6,17 +6,17 @@
     box-sizing: border-box;
     cursor: pointer;
     background-repeat: no-repeat;
-    background-image: url('../../../images/like.svg');
+    background-image: url('../../../../images/like.svg');
     background-color: transparent;
 }
 
-.items-grid__like:hover {
+.card__button_like:hover {
     opacity: 50%;
     transition: .3s ease-in-out;
 }
 
-.items-grid__like_active {
-    background-image: url('../../../images/like-active.svg');
+.card__button_like_active {
+    background-image: url('../../../../images/like-active.svg');
 }
 
 

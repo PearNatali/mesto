@@ -1,4 +1,4 @@
-.items-grid__delete {
+.card__button_delete {
     position: absolute;
     right: -262px;
     top: -262px;
@@ -8,12 +8,12 @@
     box-sizing: border-box;
     cursor: pointer;
     background-repeat: no-repeat;
-    background-image: url('../../../images/delete.svg');
+    background-image: url('../../../../images/delete.svg');
     background-color: transparent;
     z-index: 1;
 }
 
-.items-grid__delete:hover {
+.card__button_delete:hover {
     opacity: 50%;
     transition: 3s ease-in-out;
 }
