@@ -39,6 +39,8 @@ function openPopup(popup) {
 // Открытие попапа ред.профиля:
 profileOpenButton.addEventListener('click', function() {
     openPopup(profilePopup);
+    profilePopupInputName.value = profileName.innerText;
+    profilePopupInputJob.value = profileJob.innerText;
     profilePopupInputName.addEventListener('click', function() {
         profilePopupInputName.value = '';
     });
@@ -161,10 +163,3 @@ function handleProfileFormSubmit (evt) {
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных ред.профиля.
 profileForm.addEventListener('submit', handleProfileFormSubmit);
-//-----------------------------------------------------------------------------------------------------------------
-//Заполнение формы профиля:
-function openProfilePopup() {
-    profilePopupInputName.value = profileName.innerText;
-    profilePopupInputJob.value = profileJob.innerText;
-}
-profileOpenButton.addEventListener('click', openProfilePopup);
