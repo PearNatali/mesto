@@ -45,6 +45,7 @@ profileOpenButton.addEventListener('click', function() {
 // Открытие попапа доб.карточки:
 itemOpenButton.addEventListener('click', function() {
     openPopup(itemPopup);
+    itemForm.reset();
 });
 //-----------------------------------------------------------------------------------------------------------------
 //Функция закрытия попапа:
