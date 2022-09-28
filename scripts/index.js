@@ -41,12 +41,6 @@ profileOpenButton.addEventListener('click', function() {
     openPopup(profilePopup);
     profilePopupInputName.value = profileName.innerText;
     profilePopupInputJob.value = profileJob.innerText;
-    profilePopupInputName.addEventListener('click', function() {
-        profilePopupInputName.value = '';
-    });
-    profilePopupInputJob.addEventListener('click', function() {
-        profilePopupInputJob.value = '';
-    });
 });
 // Открытие попапа доб.карточки:
 itemOpenButton.addEventListener('click', function() {
@@ -115,8 +109,7 @@ function createCard(item) {
         event.target.closest('.card__item').remove();
     });
     //Функция zoom картинки:
-    const cardNewPhoto = newItem.querySelector('.card__photo'); //Поиск новой картинки
-    cardNewPhoto.addEventListener('click', function() {
+    cardPhoto.addEventListener('click', function() {
             openPopup(zoomPopup);
             zoomPopupImg.src = item.link;
             zoomPopupImg.alt = item.name;
