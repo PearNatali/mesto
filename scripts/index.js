@@ -1,6 +1,6 @@
 //Выборка DOM елеметов для редактирования профиля.
 const profilePopup = document.querySelector('.popup_profile'); //Сам попап по ред.профиля. 
-const profileForm = profilePopup.querySelector('.popup__container_profile'); //Содержимое попапа.
+const profileForm = profilePopup.querySelector('.popup__content_profile'); //Содержимое попапа.
 const profileCloseButton = profilePopup.querySelector('.popup__close_profile'); //Закрытие попап по ред.профиля.
 
 const profilePopupInputName = profileForm.querySelector('.popup__input_type_name'); //Имя в попап.
@@ -39,6 +39,12 @@ function openPopup(popup) {
 // Открытие попапа ред.профиля:
 profileOpenButton.addEventListener('click', function() {
     openPopup(profilePopup);
+    profilePopupInputName.addEventListener('click', function() {
+        profilePopupInputName.value = '';
+    });
+    profilePopupInputJob.addEventListener('click', function() {
+        profilePopupInputJob.value = '';
+    });
 });
 // Открытие попапа доб.карточки:
 itemOpenButton.addEventListener('click', function() {
@@ -138,9 +144,6 @@ function submitItemElement(evt) {
     addCard(itemPopupInputLink.value, itemPopupInputTitle.value);
     evt.preventDefault();
     closePopup(itemPopup);
-    cardPhoto.src = itemPopupInputLink.value;
-    cardTitle.innerText = itemPopupInputTitle.value;
-    evt.target.reset(itemPopup.value);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных новой карточки.
@@ -154,10 +157,14 @@ function handleProfileFormSubmit (evt) {
     profileName.textContent = name;
     profileJob.textContent = job;
     closePopup(profilePopup);
-    name = itemPopupInputTitle.value;
-    job = itemPopupInputLink.value;
-    evt.target.reset(profilePopup.value);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных ред.профиля.
 profileForm.addEventListener('submit', handleProfileFormSubmit);
+//-----------------------------------------------------------------------------------------------------------------
+//Заполнение формы профиля:
+function openProfilePopup() {
+    profilePopupInputName.value = profileName.innerText;
+    profilePopupInputJob.value = profileJob.innerText;
+}
+profileOpenButton.addEventListener('click', openProfilePopup);
