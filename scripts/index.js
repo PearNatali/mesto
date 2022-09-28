@@ -45,7 +45,6 @@ profileOpenButton.addEventListener('click', function() {
 // Открытие попапа доб.карточки:
 itemOpenButton.addEventListener('click', function() {
     openPopup(itemPopup);
-    itemForm.reset();
 });
 //-----------------------------------------------------------------------------------------------------------------
 //Функция закрытия попапа:
@@ -89,16 +88,16 @@ const items = [
 //-----------------------------------------------------------------------------------------------------------------
 //Работа с сайтом:
 //Задаем функцию создания новой карточки:
-function createCard(item) {
+function createCard(link, name) {
     //Выборка DOM елеметов для других функций с карточками.
     const cardTemplate = document.querySelector('.card-template').content; //Поиск контента темплит элемента.
-    const cardPhoto = cardTemplate.querySelector('.card__photo'); //Поиск внутри него картинки.
-    const cardTitle = cardTemplate.querySelector('.card__title'); //Поиск внутри названия картинки. 
-    //Передача данных карточек в templete - элемент:
-    cardPhoto.src = item.link;
-    cardPhoto.alt = item.name;
-    cardTitle.innerText = item.name;
     const newItem = cardTemplate.cloneNode(true);
+    const cardPhoto = newItem.querySelector('.card__photo'); //Поиск внутри него картинки.
+    const cardTitle = newItem.querySelector('.card__title'); //Поиск внутри названия картинки. 
+    //Передача данных карточек в templete - элемент:
+    cardPhoto.src = link;
+    cardPhoto.alt = name;
+    cardTitle.innerText = name;
     //Функция лайка:
     const cardLikeButton = newItem.querySelector('.card__button_like'); //Лайк карточки;
     cardLikeButton.addEventListener('click', function(event) {
@@ -112,33 +111,25 @@ function createCard(item) {
     //Функция zoom картинки:
     cardPhoto.addEventListener('click', function() {
             openPopup(zoomPopup);
-            zoomPopupImg.src = item.link;
-            zoomPopupImg.alt = item.name;
-            zoomPopupTitle.innerText = item.name;  
-        });   
+            zoomPopupImg.src = link;
+            zoomPopupImg.alt = name;
+            zoomPopupTitle.innerText = name;  
+        });  
     return newItem;
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Перебираем каждый элемент массива:
-items.forEach((element) => {
-    const newItems = createCard(element);
-    itemCardTable.append(newItems);
+items.forEach((item) => {
+    const newCard = createCard(item.link, item.name);
+    itemCardTable.append(newCard);
 });
-//-----------------------------------------------------------------------------------------------------------------
-//Функция добавления карточки:
-function addCard(links, names) {
-    const item = {
-        name: names,
-        link: links
-    }
-    const itemElement = createCard(item);
-    itemCardTable.prepend(itemElement);
-};
 //-----------------------------------------------------------------------------------------------------------------
 //Функция сохранения/отправки данных по новой карточке.
 function submitItemElement(evt) {
-    addCard(itemPopupInputLink.value, itemPopupInputTitle.value);
     evt.preventDefault();
+    const newCard = createCard(itemPopupInputLink.value, itemPopupInputTitle.value);
+    itemCardTable.prepend(newCard);
+    itemForm.reset();
     closePopup(itemPopup);
 };
 //-----------------------------------------------------------------------------------------------------------------
