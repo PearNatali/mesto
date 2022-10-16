@@ -10,6 +10,10 @@
     margin-bottom: 30px;
 }
 
+.popup__input_error:nth-child(2) {
+    margin-bottom: 30px;
+}
+
 @media screen and (max-width: 765px) {
     .popup__content {
         padding: 25px 22px 25px;

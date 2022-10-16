@@ -31,6 +31,8 @@
 @import url('../blocks/card/__title/card__title.css');
 /*блок popup*/
 @import url('../blocks/popup/popup.css');
+/*блок error*/
+@import url('../blocks/error/error.css');
 /*блок popup zoom*/
 @import url('../blocks/popup/__img/_zoom/popup__img_zoom.css');
 @import url('../blocks/popup/__title/_zoom/popup__title_zoom.css');
@@ -42,7 +44,9 @@
 @import url('../blocks/popup/__text/popup__text.css');
 @import url('../blocks/popup/__text/_item/popup__text_item.css');
 @import url('../blocks/popup/__input/popup__input.css');
-@import url('../blocks/popup/__submit-btn/popup__submit.css');
+@import url('../blocks/popup/__input/_error/popup__input_error.css');
+@import url('../blocks/popup/__submit/popup__submit.css');
+@import url('../blocks/popup/__submit/_disable/popup__submit_disable.css');
 /*блок footer*/
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__title/footer__title.css');

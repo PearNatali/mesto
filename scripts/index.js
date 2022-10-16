@@ -24,6 +24,8 @@ const itemCard = document.querySelector('.card'); //Сам контейнер д
 const itemCardTable = itemCard.querySelector('.card__table'); //Содержимое контейнера для новых карточек. 
 
 const itemOpenButton = profileElement.querySelector('.profile__button'); //Кнопка добавления карточеки.
+
+const submitButton = document.querySelector('.popup__submit'); //Кнопка сохранить.
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для попапа zoom каринки.
 const zoomPopup = document.querySelector('.popup_zoom'); //Сам попап zoom картинки. 
@@ -127,6 +129,8 @@ items.forEach((item) => {
 //Функция сохранения/отправки данных по новой карточке.
 function submitItemElement(evt) {
     evt.preventDefault();
+    handleValidateInput(evt);
+    checkValidity(evt);
     const newCard = createCard(itemPopupInputLink.value, itemPopupInputTitle.value);
     itemCardTable.prepend(newCard);
     itemForm.reset();

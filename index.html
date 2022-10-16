@@ -46,18 +46,28 @@
                 class="popup__close popup__close_profile" 
                 type="reset" 
                 aria-label="закрыть"></button>
-            <form class="popup__content popup__content_profile" name="myForm">
+            <form class="popup__content popup__content_profile" name="userForm" novalidate>
                 <h2 class="popup__text">Редактировать профиль</h2>
                 <input 
                     class="popup__input popup__input_type_name" 
                     name="name" 
                     type="text" 
-                    placeholder="Ваше имя">
+                    placeholder="Ваше имя"
+                    id ="name-profile" 
+                    minlength="2" 
+                    maxlength="40"
+                    required>
+                <span id="name-profile-error" class="error"></span>
                 <input 
                     class="popup__input popup__input_type_job" 
                     name="job" 
                     type="text" 
-                    placeholder="Ваша профессия">
+                    placeholder="Ваша профессия"
+                    id ="job-profile" 
+                    minlength="2" 
+                    maxlength="200"
+                    required>
+                <span id="job-profile-error" class="error"></span>
                 <button 
                     class="popup__submit popup__submit_profile" 
                     type="submit" 
@@ -72,17 +82,24 @@
                 class="popup__close popup__close_item" 
                 type="reset" 
                 aria-label="закрыть"></button>
-            <form class="popup__content popup__content_item" name="myPlace">
+            <form class="popup__content popup__content_item" name="addForm" novalidate>
                 <h2 class="popup__text popup__text_item">Новое место</h2>
-                <input class="popup__input popup__input_type_title" 
+                <input class="popup__input popup__input_type_title " 
                     name="name" 
+                    id ="name-item"
                     type="text" 
-                    placeholder="Название">
+                    placeholder="Название"
+                    required>
+                    <!--pattern="^[a-zA-Z]+$"-->
+                <span id ="name-item-error" class="error"></span>
                 <input 
                     class="popup__input popup__input_type_link" 
-                    name="link" 
-                    type="url" 
-                    placeholder="Ссылка на картинку">
+                    type="url"
+                    id="link" 
+                    name="link"
+                    placeholder="Ссылка на картинку"
+                    required>
+                <span id="link-error" class="error"></span>
                 <button 
                     class="popup__submit popup__submit_item" 
                     type="submit" 
@@ -132,5 +149,6 @@
         </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validity.js"></script>
 </body>
 </html>
