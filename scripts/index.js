@@ -34,10 +34,21 @@ const zoomCloseButton = zoomPopup.querySelector('.popup__close_zoom'); //Зак�
 const zoomPopupImg = zoomPopup.querySelector('.popup__img_zoom'); //Картинка в карточке;
 const zoomPopupTitle = zoomPopup.querySelector('.popup__title_zoom'); //Подпись карточки;
 //-----------------------------------------------------------------------------------------------------------------
-//Функция открытия попап:
+//Функция открытия попап (закрытие overlay, закрытие Esc).
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    popup.addEventListener('click', function(evt) {
+      if (evt.target === popup) {
+        closePopup(popup)
+      }
+    })
+    popup.addEventListener('keydown', function(evt) {
+      if (evt.key === 'Escape') {
+        closePopup()
+      }
+    })
 };
+//-----------------------------------------------------------------------------------------------------------------
 // Открытие попапа ред.профиля:
 profileOpenButton.addEventListener('click', function() {
     openPopup(profilePopup);
@@ -128,13 +139,11 @@ items.forEach((item) => {
 //-----------------------------------------------------------------------------------------------------------------
 //Функция сохранения/отправки данных по новой карточке.
 function submitItemElement(evt) {
-    evt.preventDefault();
-    handleValidateInput(evt);
-    checkValidity(evt);
-    const newCard = createCard(itemPopupInputLink.value, itemPopupInputTitle.value);
-    itemCardTable.prepend(newCard);
-    itemForm.reset();
-    closePopup(itemPopup);
+  evt.preventDefault();
+  const newCard = createCard(itemPopupInputLink.value, itemPopupInputTitle.value);
+  itemCardTable.prepend(newCard);
+  itemForm.reset();
+  closePopup(itemPopup);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных новой карточки.
@@ -142,13 +151,20 @@ itemForm.addEventListener('submit', submitItemElement);
 //-----------------------------------------------------------------------------------------------------------------
 //Изменение значений в шапке профиля
 function handleProfileFormSubmit (evt) {
-    evt.preventDefault();
-    const name = profilePopupInputName.value;
-    const job = profilePopupInputJob.value;
-    profileName.textContent = name;
-    profileJob.textContent = job;
-    closePopup(profilePopup);
+  evt.preventDefault();
+  const name = profilePopupInputName.value;
+  const job = profilePopupInputJob.value;
+  profileName.textContent = name;
+  profileJob.textContent = job;
+  closePopup(profilePopup);
 };
+enableValidation({
+  formSelector: '.popup__content',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disable',
+  inputErrorClass: 'popup__input_error',
+});
 //-----------------------------------------------------------------------------------------------------------------
 //Навешивание слушателя по сохранению данных ред.профиля.
 profileForm.addEventListener('submit', handleProfileFormSubmit);

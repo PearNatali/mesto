@@ -3,15 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 34px 36px 37px;
-}
-
-.popup__input:nth-child(2) {
-    margin-bottom: 30px;
-}
-
-.popup__input_error:nth-child(2) {
-    margin-bottom: 30px;
+    padding: 34px 36px 36px;
 }
 
 @media screen and (max-width: 765px) {

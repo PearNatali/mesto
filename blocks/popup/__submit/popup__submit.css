@@ -9,7 +9,7 @@
     justify-content: center;
     width: 100%;
     height: 50px;
-    margin-top: 48px;
+    margin-top: 32px;
     border-style: none;
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
@@ -30,7 +30,7 @@
 @media screen and (max-width: 765px) {
     .popup__submit {
         height: 46px;
-        margin-top: 45px;
+        margin-top: 17px;
         font-size: 14px;
         line-height: 17px;
     }

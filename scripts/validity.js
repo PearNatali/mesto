@@ -1,60 +1,59 @@
-const formAddItem = document.forms.userForm;
-const formUser = document.forms.addForm;
-
-const errorMessages = {
-    empty: 'Это обязательное поле',
-    wrongLength: 'Должзно быть от 2 до 30 символов',
-    wrongUrl: 'Здесь должна быть ссылка',
-}
-
-function isValid(input) {
-    if (input.validity.valueMissing) {
-        input.setCustomValidity(errorMessages.empty);
-        submitButton.classList.add('popup__submit_disable');
-        input.classList.add('popup__input_error');
-        return false;
-    }
-    if (input.validity.tooLong || input.validity.tooShort) {
-        input.setCustomValidity(errorMessages.wrongLength);
-        submitButton.classList.add('popup__submit_disable');
-        input.classList.add('popup__input_error');
-        return false;
-    }
-    if (input.validity.typeMismatch) {
-        input.setCustomValidity(errorMessages.wrongUrl);
-        submitButton.classList.add('popup__submit_disable');
-        input.classList.add('popup__input_error');
-        return false;
-    }
-    submitButton.classList.remove('popup__submit_disable');
-    input.classList.remove('popup__input_error');
-    return input.checkValidity();
-}
-
-function isValidField(input) {
-    const errorSpan = input.parentNode.querySelector(`#${input.id}-error`);
-    isValid(input);
-    errorSpan.textContent = input.validationMessage;
-}
-
-function handleValidateInput(evt) {
-    const currentForm = evt.currentTarget;
-    const submitButton = currentForm.querySelector('.popup__submit');
-    isValidField(evt.target);
-}
-
-function checkValidity(evt) {
-    const currentForm = evt.target;
-    if (currentForm.checkValidity()) {
-        console.log('Форма успешно отправлена')
+//Функция с вложенным объектом. Поиск всех form. 
+function enableValidation({
+    formSelector = '.popup__content', ...selectors}) {
+    const formList = Array.from(document.querySelectorAll(formSelector));
+    formList.forEach((form) => {
+        setFormValidation(form, selectors);
+    })
+};
+//-----------------------------------------------------------------------------------------------------------------
+//Функция последовательнй проверки на валидность (последовательность). 
+function setFormValidation(form, {inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass}) {
+    const inputList = Array.from(form.querySelectorAll(inputSelector));
+    const buttonElement = form.querySelector(submitButtonSelector);
+    toogleButtonState(inputList, buttonElement, inactiveButtonClass); 
+    inputList.forEach((inputElement) => { 
+        inputElement.addEventListener('input', function() {
+            checkValidity(form, inputElement, inputErrorClass); 
+            toogleButtonState(inputList, buttonElement, inactiveButtonClass); 
+        })
+    })
+};
+//-----------------------------------------------------------------------------------------------------------------
+//Функция включения валидации.
+function hasInvalidInput(inputList) {
+    return inputList.some((inputElement) => !inputElement.validity.valid)
+};
+//-----------------------------------------------------------------------------------------------------------------
+//Функция отключения/включения кнопки. 
+function toogleButtonState(inputList, buttonElement, inactiveButtonClass) {
+    if (hasInvalidInput(inputList)) {
+        buttonElement.setAttribute('disabled', ''); 
+        buttonElement.classList.add(inactiveButtonClass);
     } else {
-        console.log('Что-то пошло не так');
+        buttonElement.removeAttribute('disabled'); 
+        buttonElement.classList.remove(inactiveButtonClass);
     }
-    return currentForm.checkValidity();
+};
+//-----------------------------------------------------------------------------------------------------------------
+//Функция отображения браузерных ошибок. 
+const showInputError = (inputElement, errorElement, inputErrorClass, errorText) => {
+    inputElement.classList.add(inputErrorClass);
+    errorElement.textContent = errorText;
+};
+//-----------------------------------------------------------------------------------------------------------------
+//Функция исключения отображения ошибок. 
+const hideInputError = (inputElement, errorElement, inputErrorClass) => {
+    inputElement.classList.remove(inputErrorClass);
+    errorElement.textContent = '';
 }
-
-//formAddItem.addEventListener('submit', sendForms);
-formAddItem.addEventListener('input', handleValidateInput);
-
-//formUser.addEventListener('submit', sendForms);
-formUser.addEventListener('input', handleValidateInput);
+//-----------------------------------------------------------------------------------------------------------------
+//Функция режима лайф отображения ошибок. 
+const checkValidity = (formElement, inputElement, inputErrorClass) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    if (!inputElement.validity.valid) { 
+        showInputError(inputElement, errorElement, inputErrorClass, inputElement.validationMessage)
+    } else {
+        hideInputError(inputElement, errorElement, inputErrorClass);
+    }
+}
