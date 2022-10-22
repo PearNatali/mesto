@@ -20,12 +20,10 @@ const itemCloseButton = itemPopup.querySelector('.popup__close_item'); //Зак�
 const itemPopupInputTitle = itemPopup.querySelector('.popup__input_type_title'); //Название места в попап.
 const itemPopupInputLink = itemPopup.querySelector('.popup__input_type_link'); //Ссылка на картинку в попап.
 
-const itemCard = document.querySelector('.card'); //Сам контейнер для новых карточек.
-const itemCardTable = itemCard.querySelector('.card__table'); //Содержимое контейнера для новых карточек. 
+const itemCardTable = document.querySelector('.card__table'); //Содержимое контейнера для новых карточек. 
 
 const itemOpenButton = profileElement.querySelector('.profile__button'); //Кнопка добавления карточеки.
-
-const submitButton = document.querySelector('.popup__submit'); //Кнопка сохранить.
+const buttonElement = document.querySelector('.popup__submit'); //Кнопка сохранения введеных данных в карточке.
 //-----------------------------------------------------------------------------------------------------------------
 //Выборка DOM елеметов для попапа zoom каринки.
 const zoomPopup = document.querySelector('.popup_zoom'); //Сам попап zoom картинки. 
@@ -37,32 +35,40 @@ const zoomPopupTitle = zoomPopup.querySelector('.popup__title_zoom'); //Подп
 //Функция открытия попап (закрытие overlay, закрытие Esc).
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    popup.addEventListener('click', function(evt) {
-      if (evt.target === popup) {
-        closePopup(popup)
-      }
-    })
-    popup.addEventListener('keydown', function(evt) {
-      if (evt.key === 'Escape') {
-        closePopup()
-      }
-    })
+    profilePopupInputName.value = profileName.innerText;
+    profilePopupInputJob.value = profileJob.innerText;
+    popup.addEventListener('click', closeOverlayPopup(popup));
+    document.addEventListener('keydown', closePopupOnEscape(popup));
+};
+//-----------------------------------------------------------------------------------------------------------------
+//Функция закрытия popup через Esc.
+function closePopupOnEscape(popup) {
+  return function(evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup)
+    };  
+  };
+}
+//-----------------------------------------------------------------------------------------------------------------
+//Функция закрытия popup через overlay. 
+function closeOverlayPopup(popup) {
+  return function(evt){
+    if (evt.target === popup) {
+      closePopup(popup)
+    };
+  };
 };
 //-----------------------------------------------------------------------------------------------------------------
 // Открытие попапа ред.профиля:
-profileOpenButton.addEventListener('click', function() {
-    openPopup(profilePopup);
-    profilePopupInputName.value = profileName.innerText;
-    profilePopupInputJob.value = profileJob.innerText;
-});
+profileOpenButton.addEventListener('click', () => openPopup(profilePopup));
 // Открытие попапа доб.карточки:
-itemOpenButton.addEventListener('click', function() {
-    openPopup(itemPopup);
-});
+itemOpenButton.addEventListener('click', () => openPopup(itemPopup));
 //-----------------------------------------------------------------------------------------------------------------
 //Функция закрытия попапа:
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    popup.removeEventListener('click', closeOverlayPopup(popup));
+    document.removeEventListener('keydown', closePopupOnEscape(popup));
 };
 //Универсальная функция закрытия для всх попапов:
 const closeButtons = document.querySelectorAll('.popup__close');
@@ -104,7 +110,8 @@ const items = [
 function createCard(link, name) {
     //Выборка DOM елеметов для других функций с карточками.
     const cardTemplate = document.querySelector('.card-template').content; //Поиск контента темплит элемента.
-    const newItem = cardTemplate.cloneNode(true);
+    const cardTemplateItem = cardTemplate.querySelector('.card__item');
+    const newItem = cardTemplateItem.cloneNode(true);
     const cardPhoto = newItem.querySelector('.card__photo'); //Поиск внутри него картинки.
     const cardTitle = newItem.querySelector('.card__title'); //Поиск внутри названия картинки. 
     //Передача данных карточек в templete - элемент:
@@ -119,7 +126,7 @@ function createCard(link, name) {
     //Функция удаления:
     const cardDeleteButton = newItem.querySelector('.card__button_delete'); //Удаление карточки;
     cardDeleteButton.addEventListener('click', function(event) {
-        event.target.closest('.card__item').remove();
+        event.target.closest(newItem).remove();
     });
     //Функция zoom картинки:
     cardPhoto.addEventListener('click', function() {

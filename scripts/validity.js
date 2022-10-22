@@ -1,6 +1,6 @@
 //Функция с вложенным объектом. Поиск всех form. 
 function enableValidation({
-    formSelector = '.popup__content', ...selectors}) {
+    formSelector, ...selectors}) {
     const formList = Array.from(document.querySelectorAll(formSelector));
     formList.forEach((form) => {
         setFormValidation(form, selectors);
@@ -11,13 +11,14 @@ function enableValidation({
 function setFormValidation(form, {inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass}) {
     const inputList = Array.from(form.querySelectorAll(inputSelector));
     const buttonElement = form.querySelector(submitButtonSelector);
-    toogleButtonState(inputList, buttonElement, inactiveButtonClass); 
+    toggleButtonState(inputList, buttonElement, inactiveButtonClass); 
     inputList.forEach((inputElement) => { 
         inputElement.addEventListener('input', function() {
-            checkValidity(form, inputElement, inputErrorClass); 
-            toogleButtonState(inputList, buttonElement, inactiveButtonClass); 
+            toggleInputErrorState(form, inputElement, inputErrorClass); 
+            toggleButtonState(inputList, buttonElement, inactiveButtonClass); 
         })
     })
+    form.addEventListener('submit', () => toggleButtonState(inputList, buttonElement, inactiveButtonClass));
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Функция включения валидации.
@@ -26,14 +27,22 @@ function hasInvalidInput(inputList) {
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Функция отключения/включения кнопки. 
-function toogleButtonState(inputList, buttonElement, inactiveButtonClass) {
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.setAttribute('disabled', ''); 
-        buttonElement.classList.add(inactiveButtonClass);
+        enableButton(buttonElement, inactiveButtonClass);
     } else {
-        buttonElement.removeAttribute('disabled'); 
-        buttonElement.classList.remove(inactiveButtonClass);
+        disableButton(buttonElement, inactiveButtonClass);
     }
+};
+//Функция активации кнопки.
+function enableButton(buttonElement, inactiveButtonClass) {
+    buttonElement.setAttribute('disabled', ''); 
+    buttonElement.classList.add(inactiveButtonClass);
+};
+//Функция деактивации кнопки.
+function disableButton(buttonElement, inactiveButtonClass) {
+    buttonElement.removeAttribute('disabled'); 
+    buttonElement.classList.remove(inactiveButtonClass);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Функция отображения браузерных ошибок. 
@@ -49,7 +58,7 @@ const hideInputError = (inputElement, errorElement, inputErrorClass) => {
 }
 //-----------------------------------------------------------------------------------------------------------------
 //Функция режима лайф отображения ошибок. 
-const checkValidity = (formElement, inputElement, inputErrorClass) => {
+const toggleInputErrorState = (formElement, inputElement, inputErrorClass) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     if (!inputElement.validity.valid) { 
         showInputError(inputElement, errorElement, inputErrorClass, inputElement.validationMessage)
