@@ -35,40 +35,42 @@ const zoomPopupTitle = zoomPopup.querySelector('.popup__title_zoom'); //Подп
 //Функция открытия попап (закрытие overlay, закрытие Esc).
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    profilePopupInputName.value = profileName.innerText;
-    profilePopupInputJob.value = profileJob.innerText;
-    popup.addEventListener('click', closeOverlayPopup(popup));
-    document.addEventListener('keydown', closePopupOnEscape(popup));
+    popup.addEventListener('click', closePopupByOverlayClick);
+    document.addEventListener('keydown', closePopupOnEscape);
 };
 //-----------------------------------------------------------------------------------------------------------------
 //Функция закрытия popup через Esc.
-function closePopupOnEscape(popup) {
-  return function(evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup)
-    };  
-  };
-}
+function closePopupOnEscape(evt) {
+  if (evt.key === 'Escape') {
+    const opendPopup = document.querySelector('.popup_opened');
+    closePopup(opendPopup);
+  }
+};
 //-----------------------------------------------------------------------------------------------------------------
 //Функция закрытия popup через overlay. 
-function closeOverlayPopup(popup) {
-  return function(evt){
-    if (evt.target === popup) {
-      closePopup(popup)
-    };
-  };
+function closePopupByOverlayClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    const opendPopup = document.querySelector('.popup_opened');
+    closePopup(opendPopup);
+  }
 };
 //-----------------------------------------------------------------------------------------------------------------
 // Открытие попапа ред.профиля:
-profileOpenButton.addEventListener('click', () => openPopup(profilePopup));
+profileOpenButton.addEventListener('click', function() {
+  openPopup(profilePopup);
+  profilePopupInputName.value = profileName.innerText;
+  profilePopupInputJob.value = profileJob.innerText;
+});
 // Открытие попапа доб.карточки:
-itemOpenButton.addEventListener('click', () => openPopup(itemPopup));
+itemOpenButton.addEventListener('click', function() {
+  openPopup(itemPopup);
+});
 //-----------------------------------------------------------------------------------------------------------------
 //Функция закрытия попапа:
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    popup.removeEventListener('click', closeOverlayPopup(popup));
-    document.removeEventListener('keydown', closePopupOnEscape(popup));
+    popup.removeEventListener('click', closePopupByOverlayClick);
+    document.removeEventListener('keydown', closePopupOnEscape);
 };
 //Универсальная функция закрытия для всх попапов:
 const closeButtons = document.querySelectorAll('.popup__close');
